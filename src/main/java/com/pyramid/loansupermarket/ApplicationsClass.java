@@ -15,6 +15,7 @@ public class ApplicationsClass {
     @RequestMapping("/")
     public String index(ModelMap map) {
         map.addAttribute("newt", "symoon");
+        map.addAttribute("loansupermarket", "贷款超市");
         return "index";
     }
 
