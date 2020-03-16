@@ -3,7 +3,7 @@ package com.pyramid.loansupermarket.user;
 
 import com.alibaba.fastjson.JSONObject;
 import com.pyramid.loansupermarket.model.User;
-import com.pyramid.loansupermarket.modelRegistry.UserRegistry;
+import com.pyramid.loansupermarket.modelRepository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserAdmin {
     @Autowired
-    private UserRegistry respository;
+    private UserRepository respository;
 
     @RequestMapping(value = "/admin",method = RequestMethod.GET)
     public List<User> dataList(){
