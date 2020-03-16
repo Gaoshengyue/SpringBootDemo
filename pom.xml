@@ -11,8 +11,8 @@
     <groupId>com.example</groupId>
     <artifactId>loansupermarket</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>demo</name>
-    <description>Demo project for Spring Boot</description>
+    <name>loansupermarket</name>
+    <description>loansupermarket project for Spring Boot</description>
 
     <properties>
         <java.version>1.8</java.version>
