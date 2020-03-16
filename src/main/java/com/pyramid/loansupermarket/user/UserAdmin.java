@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-
 @RestController
 @ResponseBody
 @RequestMapping("/user")
@@ -18,17 +17,17 @@ public class UserAdmin {
     @Autowired
     private UserRepository respository;
 
-    @RequestMapping(value = "/admin",method = RequestMethod.GET)
-    public List<User> dataList(){
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    public List<User> dataList() {
 
         return respository.findAll();
     }
 
 
-    @RequestMapping(value = "/admin",method = RequestMethod.POST)
-    public User InsertUser(@RequestBody JSONObject jsonObject){
+    @RequestMapping(value = "/admin", method = RequestMethod.POST)
+    public User InsertUser(@RequestBody JSONObject jsonObject) {
         System.out.println(jsonObject.toJSONString());
-        User userObj=new User();
+        User userObj = new User();
         userObj.setUsername(jsonObject.get("username").toString());
         userObj.setPassword(jsonObject.get("password").toString());
 
