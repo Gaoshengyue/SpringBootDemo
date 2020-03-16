@@ -1,0 +1,32 @@
+server:
+  port: 8088
+spring:
+  datasource:
+    driver-class-name: org.gjt.mm.mysql.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://172.18.130.143:3306/test?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: root
+    dbcp2:
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 1000
+
+  jpa:
+    database: mysql
+    show-sql: true #后台显示sql语句
+
+    hibernate:
+      ddl-auto: update
+  freemarker:
+    template-loader-path: classpath:/templates/
+    suffix: .html
+    allow-request-override: false
+    cache: true
+    check-template-location: true
+    charset: UTF-8
+    content-type: text/html
+    expose-request-attributes: false
+    expose-session-attributes: false
+    expose-spring-macro-helpers: false
