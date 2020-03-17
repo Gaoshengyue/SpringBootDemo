@@ -18,7 +18,8 @@ spring:
     show-sql: true #后台显示sql语句
 
     hibernate:
-      ddl-auto: update
+      ddl-auto: update  #更新不删除字段
+#      ddl-auto: validate #更新表
   freemarker:
     template-loader-path: classpath:/templates/
     suffix: .html

@@ -28,8 +28,11 @@ public class UserAdmin {
     public User InsertUser(@RequestBody JSONObject jsonObject) {
         System.out.println(jsonObject.toJSONString());
         User userObj = new User();
-        userObj.setUsername(jsonObject.get("username").toString());
-        userObj.setPassword(jsonObject.get("password").toString());
+        userObj.setUsername(jsonObject.getString("username"));
+        userObj.setPassword(jsonObject.getString("password"));
+        userObj.setPhoneNumber(jsonObject.getString("phoneNumber"));
+        userObj.setIdNumber(jsonObject.getString("idNumber"));
+        userObj.setRealName(jsonObject.getString("realName"));
 
         return respository.save(userObj);
     }
