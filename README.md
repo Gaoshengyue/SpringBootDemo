@@ -8,11 +8,17 @@ java springboot
 ### model
 各个表的映射类，使用方法集合
 ### modelRegistry
-各个表对象存储库
-### user
-用户管理逻辑
+各个表对象存储库，接口映射
+### ApiLib
+外部接口目录
 ### status
 状态类管理目录
+### messageLib
+消息返回管理目录
+### Service
+业务接口实体目录
+### ServiceRepository
+业务接口定义目录
 ### resources
 #### static
 静态文件目录

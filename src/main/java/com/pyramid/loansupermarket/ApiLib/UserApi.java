@@ -22,7 +22,6 @@ public class UserApi {
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public List<User> dataList() {
-
         return respository.findAll();
     }
 
