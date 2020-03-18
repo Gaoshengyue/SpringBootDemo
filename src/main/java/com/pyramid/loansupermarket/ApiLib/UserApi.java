@@ -21,7 +21,7 @@ public class UserApi {
     private UserRepository respository;
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public List<User> dataList() {
+    public List<User> userList() {
         return respository.findAll();
     }
 
@@ -29,8 +29,8 @@ public class UserApi {
     private UserAdminRepository userAdminRepository;
     @RequestMapping(value = "/admin", method = RequestMethod.POST)
     public UserResultStatus InsertUser(@RequestBody JSONObject jsonObject) {
-        UserResultStatus rs_status;
-        rs_status=userAdminRepository.register(jsonObject);
-        return rs_status;
+        UserResultStatus userResultStatus;
+        userResultStatus=userAdminRepository.register(jsonObject);
+        return userResultStatus;
     }
 }

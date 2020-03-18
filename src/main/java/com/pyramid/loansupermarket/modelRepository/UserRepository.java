@@ -16,4 +16,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     List<User> findUser(@Param("username") String username, @Param("real_name") String real_name, @Param("phone_number") String phone_number, @Param("idnumber") String idnumber);
 
 
+    User findUserById(Integer var1);
+
 }

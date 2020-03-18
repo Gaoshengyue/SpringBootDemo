@@ -17,7 +17,7 @@ import java.util.List;
 public class UserAdmin implements UserAdminRepository {
 
     @Autowired
-    private UserRepository respository;
+    private UserRepository userRepository;
 
     public UserResultStatus register(JSONObject jsonObject) {
         UserResultStatus rs_obj = new UserResultStatus();
@@ -27,7 +27,7 @@ public class UserAdmin implements UserAdminRepository {
         user_list = getUser(user_obj);
         if (user_list.size() <= 0) {
             UserInsertSucessMessage message_obj = new UserInsertSucessMessage();
-            rs_obj.setUser(respository.save(user_obj));
+            rs_obj.setUser(userRepository.save(user_obj));
             rs_obj.setMessage(message_obj.message);
             rs_obj.setStatusCode(message_obj.code);
         } else {
@@ -52,7 +52,7 @@ public class UserAdmin implements UserAdminRepository {
 
     public List<User> getUser(User user_obj) {
         List<User> user_list;
-        user_list = respository.findUser(user_obj.getUsername(), user_obj.getRealName(), user_obj.getPhoneNumber(), user_obj.getIdNumber());
+        user_list = userRepository.findUser(user_obj.getUsername(), user_obj.getRealName(), user_obj.getPhoneNumber(), user_obj.getIdNumber());
         return user_list;
     }
 

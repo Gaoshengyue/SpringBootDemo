@@ -14,15 +14,17 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+//表结构实体类
 @Data
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  //自动递增id
     private int id;
     @Column(name = "username")
     private String username;
@@ -40,21 +42,22 @@ public class User {
     private String idNumber;
 
 
-    @OneToMany(mappedBy = "users")
-    private Set<Demand> demands = new HashSet<>();
+    @OneToMany(cascade = {CascadeType.PERSIST})
+    private List<Demand> demands;  //一对多关联，多表在Demand
 
 
     @CreatedDate
     @JsonFormat(timezone = "GMT+8")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")    //插入时自动创建时间
     private Long createTime;
 
     @LastModifiedDate
     @JsonFormat(timezone = "GMT+8")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")  //最后一次更新自动更新时间
     private Long updateTime;
 
 
+    //赋值方法
     public void setUsername(String username) {
         this.username = username;
     }
@@ -76,6 +79,7 @@ public class User {
     }
 
 
+    //取值方法
     public Integer getId() {
 
         return id;
@@ -99,13 +103,16 @@ public class User {
         return idNumber;
     }
 
-    public Set<Demand> getDemands() {
+    //传递一对多对象关联
+    public List<Demand> getDemands() {
         return demands;
     }
 
-    public void setDemands(Set<Demand> demands) {
+    public void setDemands(List<Demand> demands) {
         this.demands = demands;
     }
+
+
     public Long getCreateTime() {
         return createTime;
     }
