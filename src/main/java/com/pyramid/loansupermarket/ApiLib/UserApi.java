@@ -1,9 +1,12 @@
-package com.pyramid.loansupermarket.user;
+package com.pyramid.loansupermarket.ApiLib;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.pyramid.loansupermarket.Service.UserAdmin;
+import com.pyramid.loansupermarket.ServiceRepository.UserAdminRepository;
 import com.pyramid.loansupermarket.model.User;
 import com.pyramid.loansupermarket.modelRepository.UserRepository;
+import com.pyramid.loansupermarket.status.UserResultStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +16,7 @@ import java.util.List;
 @RestController
 @ResponseBody
 @RequestMapping("/user")
-public class UserAdmin {
+public class UserApi {
     @Autowired
     private UserRepository respository;
 
@@ -23,17 +26,12 @@ public class UserAdmin {
         return respository.findAll();
     }
 
-
+    @Autowired
+    private UserAdminRepository userAdminRepository;
     @RequestMapping(value = "/admin", method = RequestMethod.POST)
-    public User InsertUser(@RequestBody JSONObject jsonObject) {
-        System.out.println(jsonObject.toJSONString());
-        User userObj = new User();
-        userObj.setUsername(jsonObject.getString("username"));
-        userObj.setPassword(jsonObject.getString("password"));
-        userObj.setPhoneNumber(jsonObject.getString("phoneNumber"));
-        userObj.setIdNumber(jsonObject.getString("idNumber"));
-        userObj.setRealName(jsonObject.getString("realName"));
-
-        return respository.save(userObj);
+    public UserResultStatus InsertUser(@RequestBody JSONObject jsonObject) {
+        UserResultStatus rs_status;
+        rs_status=userAdminRepository.register(jsonObject);
+        return rs_status;
     }
 }

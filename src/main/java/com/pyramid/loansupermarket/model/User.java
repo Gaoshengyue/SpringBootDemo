@@ -2,11 +2,15 @@ package com.pyramid.loansupermarket.model;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -41,10 +45,14 @@ public class User {
 
 
     @CreatedDate
-    private Date createTime;
+    @JsonFormat(timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Long createTime;
 
     @LastModifiedDate
-    private Date updateTime;
+    @JsonFormat(timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Long updateTime;
 
 
     public void setUsername(String username) {
@@ -98,11 +106,11 @@ public class User {
     public void setDemands(Set<Demand> demands) {
         this.demands = demands;
     }
-    public Date getCreateTime() {
+    public Long getCreateTime() {
         return createTime;
     }
 
-    public Date getUpdateTime() {
+    public Long getUpdateTime() {
         return updateTime;
     }
 

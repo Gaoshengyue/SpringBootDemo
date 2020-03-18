@@ -3,6 +3,8 @@ package com.pyramid.loansupermarket.model;
 import javax.persistence.*;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -33,20 +35,20 @@ public class Demand {
 
 
     @CreatedDate
-    private Date createtime;
+    private Long createtime;
 
     @LastModifiedDate
-    private Date updatetime;
+    private Long updatetime;
 
     public String getReason() {
         return reason;
     }
 
-    public Date getCreatetime() {
+    public Long getCreatetime() {
         return createtime;
     }
 
-    public Date getUpdatetime() {
+    public Long getUpdatetime() {
         return updatetime;
     }
 
