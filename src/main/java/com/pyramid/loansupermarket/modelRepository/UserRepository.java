@@ -12,10 +12,10 @@ import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-    @Query(value = "select * from user where username= :username or real_name= :real_name or phone_number= :phone_number or idnumber= :idnumber", nativeQuery = true)
-    List<User> findUser(@Param("username") String username, @Param("real_name") String real_name, @Param("phone_number") String phone_number, @Param("idnumber") String idnumber);
+    @Query(value = "select * from user where username= :username or real_name= :real_name or phone_number= :phone_number or id_number= :id_number", nativeQuery = true)
+    List<User> findUser(@Param("username") String username, @Param("real_name") String real_name, @Param("phone_number") String phone_number, @Param("id_number") String id_number);
 
-
-    User findUserById(Integer var1);
+    @Query(value = "select * from user where id = :id", nativeQuery = true)
+    User findOneUserById(@Param("id") Integer id);
 
 }

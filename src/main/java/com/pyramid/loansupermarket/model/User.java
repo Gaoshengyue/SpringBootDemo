@@ -38,23 +38,20 @@ public class User {
     @Column(name="real_name")
     private String realName;
 
-    @Column(name="IDNumber")
+    @Column(name="ID_number")
     private String idNumber;
 
 
-    @OneToMany(cascade = {CascadeType.PERSIST})
-    private List<Demand> demands;  //一对多关联，多表在Demand
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id",referencedColumnName ="id" )
+    private Set<Demand> demands;  //一对多关联，多表在Demand
 
 
     @CreatedDate
-    @JsonFormat(timezone = "GMT+8")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")    //插入时自动创建时间
-    private Long createTime;
+    private String createTime;
 
     @LastModifiedDate
-    @JsonFormat(timezone = "GMT+8")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")  //最后一次更新自动更新时间
-    private Long updateTime;
+    private String updateTime;
 
 
     //赋值方法
@@ -80,7 +77,7 @@ public class User {
 
 
     //取值方法
-    public Integer getId() {
+    public int getId() {
 
         return id;
     }
@@ -104,20 +101,20 @@ public class User {
     }
 
     //传递一对多对象关联
-    public List<Demand> getDemands() {
+    public Set<Demand> getDemands() {
         return demands;
     }
 
-    public void setDemands(List<Demand> demands) {
+    public void setDemands(Set<Demand> demands) {
         this.demands = demands;
     }
 
 
-    public Long getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public Long getUpdateTime() {
+    public String getUpdateTime() {
         return updateTime;
     }
 

@@ -40,12 +40,13 @@ public class DemandService implements DemandServiceRepository {
     public Demand createDemandObj(JSONObject jsonObject){
         Demand demand = new Demand();
         User user;
-        user=userRepository.findUserById(jsonObject.getInteger("user_id"));
+        user=userRepository.findOneUserById(jsonObject.getIntValue("user_id"));
         System.out.println(user);
         demand.setMoney(jsonObject.getFloat("Money"));
         demand.setReason(jsonObject.getString("Reason"));
-        demand.setUsers(user);
-        System.out.println(demand);
+        user.getDemands().add(demand);
+        userRepository.save(user);
+//        demand.setUsers(user);
         demand=demandRepository.save(demand);
         return demand;
     }
