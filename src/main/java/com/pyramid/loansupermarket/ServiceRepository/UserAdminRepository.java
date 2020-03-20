@@ -1,7 +1,6 @@
 package com.pyramid.loansupermarket.ServiceRepository;
 
 import com.alibaba.fastjson.JSONObject;
-import com.pyramid.loansupermarket.Service.UserAdmin;
 import com.pyramid.loansupermarket.model.User;
 import com.pyramid.loansupermarket.status.UserResultStatus;
 import org.springframework.stereotype.Repository;

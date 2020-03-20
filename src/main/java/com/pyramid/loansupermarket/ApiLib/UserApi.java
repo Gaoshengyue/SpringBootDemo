@@ -2,7 +2,6 @@ package com.pyramid.loansupermarket.ApiLib;
 
 
 import com.alibaba.fastjson.JSONObject;
-import com.pyramid.loansupermarket.Service.UserAdmin;
 import com.pyramid.loansupermarket.ServiceRepository.UserAdminRepository;
 import com.pyramid.loansupermarket.model.User;
 import com.pyramid.loansupermarket.modelRepository.UserRepository;

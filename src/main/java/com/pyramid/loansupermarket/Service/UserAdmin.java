@@ -7,7 +7,6 @@ import com.pyramid.loansupermarket.messageLib.UserInsertSucessMessage;
 import com.pyramid.loansupermarket.model.User;
 import com.pyramid.loansupermarket.modelRepository.UserRepository;
 import com.pyramid.loansupermarket.status.UserResultStatus;
-import org.hibernate.dialect.SybaseAnywhereDialect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

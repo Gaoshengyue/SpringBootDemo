@@ -3,7 +3,6 @@ package com.pyramid.loansupermarket.Service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.pyramid.loansupermarket.ServiceRepository.DemandServiceRepository;
-import com.pyramid.loansupermarket.ServiceRepository.UserAdminRepository;
 import com.pyramid.loansupermarket.messageLib.DemandFaieldMessage;
 import com.pyramid.loansupermarket.messageLib.DemandSuccessMessage;
 import com.pyramid.loansupermarket.model.Demand;
@@ -13,9 +12,6 @@ import com.pyramid.loansupermarket.modelRepository.UserRepository;
 import com.pyramid.loansupermarket.status.DemandResultStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.validation.constraints.Null;
-import java.util.Optional;
 
 //Demand需求接口实体
 @Service //定义接口类型
