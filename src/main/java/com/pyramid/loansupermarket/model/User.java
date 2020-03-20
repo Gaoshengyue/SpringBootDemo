@@ -11,6 +11,8 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 import java.util.Date;
 import java.util.HashSet;
@@ -18,7 +20,7 @@ import java.util.List;
 import java.util.Set;
 
 //表结构实体类
-@Data
+//@Data
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "user")
@@ -41,7 +43,7 @@ public class User {
     @Column(name="ID_number")
     private String idNumber;
 
-
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id",referencedColumnName ="id" )
     private Set<Demand> demands;  //一对多关联，多表在Demand
@@ -101,6 +103,7 @@ public class User {
     }
 
     //传递一对多对象关联
+    @JsonIgnore
     public Set<Demand> getDemands() {
         return demands;
     }

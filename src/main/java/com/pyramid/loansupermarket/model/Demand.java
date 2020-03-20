@@ -3,6 +3,7 @@ package com.pyramid.loansupermarket.model;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -16,7 +17,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+//@Data
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "demand")
@@ -32,7 +33,8 @@ public class Demand {
     @Column(name = "reason")
     private String reason;
 
-    @ManyToOne(cascade ={CascadeType.MERGE,CascadeType.REFRESH} )
+    @JsonIgnore
+    @ManyToOne(cascade ={CascadeType.MERGE,CascadeType.REFRESH})
     @JoinColumn(name="user_id")
     private User users;
 
@@ -74,6 +76,7 @@ public class Demand {
         this.users = users;
     }
 
+    @JsonIgnore
     public User getUsers() {
         return users;
     }
