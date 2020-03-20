@@ -17,11 +17,11 @@ import org.springframework.stereotype.Service;
 import javax.validation.constraints.Null;
 import java.util.Optional;
 
-
-@Service
+//Demand需求接口实体
+@Service //定义接口类型
 public class DemandService implements DemandServiceRepository {
 
-    @Autowired
+    @Autowired  //注入数据接口操作
     private DemandRepository demandRepository;
 
     @Autowired
@@ -48,7 +48,7 @@ public class DemandService implements DemandServiceRepository {
         return demandResultStatus;
     }
 
-    @Override
+    @Override //重载，重写父类
     public Demand createDemandObj(JSONObject jsonObject) {
         return null;
     }
@@ -62,7 +62,6 @@ public class DemandService implements DemandServiceRepository {
 
     public Demand createDemandObj(JSONObject jsonObject,User user){
         Demand demand = new Demand();
-        System.out.println(user.toString());
         demand.setMoney(jsonObject.getFloat("Money"));
         demand.setReason(jsonObject.getString("Reason"));
         demand.setUsers(user);

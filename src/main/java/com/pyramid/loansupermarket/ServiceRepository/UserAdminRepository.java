@@ -7,7 +7,7 @@ import com.pyramid.loansupermarket.status.UserResultStatus;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+// UserAdmin用户管理接口定义
 @Repository("userAdminRepository")
 public interface UserAdminRepository {
 

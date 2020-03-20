@@ -14,13 +14,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 //表结构实体类
-//@Data
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "user")
@@ -43,9 +41,9 @@ public class User {
     @Column(name="ID_number")
     private String idNumber;
 
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id",referencedColumnName ="id" )
+    @JsonIgnore //忽略此属性，用于多表关联
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)  //关联属性
+    @JoinColumn(name = "user_id",referencedColumnName ="id" ) //关联id 反查id
     private Set<Demand> demands;  //一对多关联，多表在Demand
 
 

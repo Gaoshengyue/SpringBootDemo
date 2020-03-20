@@ -8,7 +8,7 @@ import com.pyramid.loansupermarket.model.User;
 import com.pyramid.loansupermarket.status.DemandResultStatus;
 import com.pyramid.loansupermarket.status.UserResultStatus;
 import org.springframework.stereotype.Repository;
-
+//Demand需求接口定义
 @Repository("demandServiceRepository")
 public interface DemandServiceRepository {
 

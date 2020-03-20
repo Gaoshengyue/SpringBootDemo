@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+//UserAdmin用户管理业务接口实体
 @Service
 public class UserAdmin implements UserAdminRepository {
 

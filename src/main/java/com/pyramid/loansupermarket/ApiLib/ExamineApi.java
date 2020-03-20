@@ -13,12 +13,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@ResponseBody
+
+@RestController   //Rest风格控制器，注意与Controller不能同时使用，此风格控制器无法使用模板
+@ResponseBody    //转换对象，json格式
 @RequestMapping("/examine")
 public class ExamineApi {
 
-    @Autowired
+    @Autowired  //注入数据操作接口
     private DemandRepository demandRepository;
 
     @RequestMapping(value = "/demand", method = RequestMethod.GET)
@@ -26,10 +27,10 @@ public class ExamineApi {
         return demandRepository.findAll();
     }
 
-    @Autowired
+    @Autowired //注入业务操作接口
     private DemandServiceRepository demandServiceRepository;
     @RequestMapping(value = "/demand", method = RequestMethod.POST)
-    public DemandResultStatus InsertUser(@RequestBody JSONObject jsonObject) {
+    public DemandResultStatus InsertUser(@RequestBody JSONObject jsonObject) { //JSONOBject为阿里解析库
         DemandResultStatus demandResultStatus;
         demandResultStatus=demandServiceRepository.createDemand(jsonObject);
         return demandResultStatus;

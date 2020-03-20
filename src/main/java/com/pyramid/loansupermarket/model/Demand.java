@@ -17,7 +17,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-//@Data
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "demand")
@@ -29,7 +28,7 @@ public class Demand {
     @Column(name = "money")
     private float money;
 
-    @Lob
+    @Lob  //自动将字符串转换成长文本
     @Column(name = "reason")
     private String reason;
 
@@ -37,8 +36,6 @@ public class Demand {
     @ManyToOne(cascade ={CascadeType.MERGE,CascadeType.REFRESH})
     @JoinColumn(name="user_id")
     private User users;
-
-
 
     @CreatedDate
     private String createtime;

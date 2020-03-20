@@ -8,23 +8,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
-@EnableJpaAuditing
-@SpringBootApplication
+
+@Controller //控制，调用@service等
+@EnableJpaAuditing //审计，自动创建时间，更新时间等
+@SpringBootApplication  //启动项注解
 public class ApplicationsClass {
 
 
-    @RequestMapping("/")
+    @RequestMapping("/") //路由Mapping
     public String index(ModelMap map) {
-        map.addAttribute("newt", "symoon");
+        map.addAttribute("newt", "symoon");              //模板添加字段
         map.addAttribute("loansupermarket", "贷款超市");
-        return "index";
+        return "index"; //返回模板位置
     }
 
 
     public static void main(String[] args) {
 
-        SpringApplication.run(ApplicationsClass.class, args);
+        SpringApplication.run(ApplicationsClass.class, args);  //启动项
     }
 }
 

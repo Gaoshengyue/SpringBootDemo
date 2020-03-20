@@ -8,7 +8,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-@Transactional
+//Demand数据接口定义
+
 public interface DemandRepository extends JpaRepository<Demand, Integer> {
 
 
